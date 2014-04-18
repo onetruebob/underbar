@@ -148,9 +148,19 @@ var _ = {};
     });
   };
 
-  // Calls the method named by methodName on each value in the list.
+  // Calls the method named by functionOrKey on each value in the list.
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
+    return _.map(collection, function(value, key, collection){
+      var invokeFunc;
+      if(typeof(functionOrKey) === "function") { //function passed is a function, use it.
+        invokeFunc = functionOrKey;
+      } else { //function passed is the name of a method, conver to function
+        invokeFunc = value[functionOrKey];
+      }
+      
+      return invokeFunc.apply(value, args);
+    });
   };
 
   // Reduces an array or object to a single value by repetitively calling
