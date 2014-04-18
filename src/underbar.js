@@ -105,6 +105,16 @@ var _ = {};
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var knownVals = [];
+
+    return _.filter(array, function (val){
+      if(_.indexOf(knownVals, val) === -1) { //first time we've seen this value
+        knownVals.push(val);
+        return true;
+      } else { //we've seen this value before
+        return false;
+      }
+    });
   };
 
 
