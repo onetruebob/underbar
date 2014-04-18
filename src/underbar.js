@@ -345,7 +345,7 @@ var _ = {};
   _.shuffle = function(array) {
     var shuffledArr = array.slice(); //duplciate the array
     var swapTemp; //temp store for swaping array values;
-    // puedocode Fisher-Yates shuffle algorithm from wikipedia
+    // psuedocode Fisher-Yates shuffle algorithm from wikipedia
     // To shuffle an array a of n elements (indices 0..n-1):
     // for i from n − 1 downto 1 do
     //      j ← random integer with 0 ≤ j ≤ i
