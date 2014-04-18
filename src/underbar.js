@@ -158,7 +158,7 @@ var _ = {};
       } else { //function passed is the name of a method, conver to function
         invokeFunc = value[functionOrKey];
       }
-      
+
       return invokeFunc.apply(value, args);
     });
   };
@@ -177,6 +177,11 @@ var _ = {};
   //     return total + number;
   //   }, 0); // should be 6
   _.reduce = function(collection, iterator, accumulator) {
+    var reducedVal = typeof(accumulator) === "undefined" ? 0 : accumulator;
+    _.each(collection, function(value){
+      reducedVal = iterator(reducedVal, value);
+    });
+    return reducedVal;
   };
 
   // Determine if the array or object contains a given value (using `===`).
