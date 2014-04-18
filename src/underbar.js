@@ -343,6 +343,20 @@ var _ = {};
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var shuffledArr = array.slice(); //duplciate the array
+    var swapTemp; //temp store for swaping array values;
+    // puedocode Fisher-Yates shuffle algorithm from wikipedia
+    // To shuffle an array a of n elements (indices 0..n-1):
+    // for i from n − 1 downto 1 do
+    //      j ← random integer with 0 ≤ j ≤ i
+    //      exchange a[j] and a[i]
+    for(var i = shuffledArr.length - 1; i >= 1; i--) {
+      var j = Math.floor(Math.random() * i);
+        swapTemp = shuffledArr[j];
+        shuffledArr[j] = shuffledArr[i];
+        shuffledArr[i] = swapTemp;
+    }
+    return shuffledArr;
   };
 
 
